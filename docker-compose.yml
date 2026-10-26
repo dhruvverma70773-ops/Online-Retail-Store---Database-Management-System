@@ -1,0 +1,21 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: retail-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: Root@12345
+      MYSQL_DATABASE: retail_store
+    ports:
+      - "3306:3306"
+    volumes:
+      - retail_mysql_data:/var/lib/mysql
+      - ./sql:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-pRoot@12345"]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+
+volumes:
+  retail_mysql_data:

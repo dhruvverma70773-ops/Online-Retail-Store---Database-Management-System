@@ -1,0 +1,20 @@
+Online Retail Store DBMS - expected validation output
+=====================================================
+SELECT COUNT(*) FROM customers;    30
+SELECT COUNT(*) FROM categories;    10
+SELECT COUNT(*) FROM products;      50
+SELECT COUNT(*) FROM suppliers;     8
+SELECT COUNT(*) FROM orders;        100
+SELECT COUNT(*) FROM order_items;   250
+SELECT COUNT(*) FROM payments;      100
+
+The counts are produced by sql/02_insert_dml.sql. Run the scripts in README.md
+with MySQL 8 to generate live query output and EXPLAIN plans.
+
+Development verification:
+- Python compileall: PASSED
+- ER diagram PNG generated: PASSED
+- MySQL client available: NO (not installed in this environment)
+- Docker available: NO (not installed in this environment)
+- Python dependency import: BLOCKED by Windows Application Control policy
+  while loading the pandas native DLL; recreate the venv on an allowed machine.
